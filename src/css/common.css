@@ -1,0 +1,7 @@
+.form-line-style > div{
+    margin: 5px 0;
+}
+.form-item {
+    display: flex;
+    padding: 5px 0;
+}

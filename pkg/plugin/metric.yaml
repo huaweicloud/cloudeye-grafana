@@ -1,0 +1,53 @@
+## 需要关注的区域列表，可按需增减，只在Huaweicloud Mode（华为云多region模式）配置模式下生效
+### 支持的区域列表见：https://developer.huaweicloud.com/endpoint?IAM
+regions:
+  - af-south-1 #非洲-约翰内斯堡
+  - cn-north-4 #华北-北京四
+  - cn-north-1 #华北-北京一
+  - cn-east-2 #华东-上海二
+  - cn-east-3 #华东-上海一
+  - cn-south-1 #华南-广州
+  - cn-southwest-2 #西南-贵阳一
+  - ap-southeast-2 #亚太-曼谷
+  - ap-southeast-3 #亚太-新加坡
+  - ap-southeast-1 #中国-香港
+
+## 以下配置在Get Metric Meta From Conf开关启用后生效, 用于配置需要关注的区域/服务/资源/指标列表
+## 需要关注的服务列表，可按需增减，见：https://support.huaweicloud.com/usermanual-ces/zh-cn_topic_0202622212.html
+namespaces:
+  cn-east-3:
+    - SYS.ECS
+    - SYS.ELB
+
+## 需要关注的指标列表，可按需增减，见: https://support.huaweicloud.com/usermanual-ces/zh-cn_topic_0202622212.html
+metrics:
+  SYS.ECS|instance_id:
+    - cpu_util
+    - mem_util
+    - disk_util_inband
+    - disk_read_bytes_rate
+    - disk_write_bytes_rate
+    - disk_read_requests_rate
+    - disk_write_requests_rate
+    - network_incoming_bytes_rate_inband
+    - network_outgoing_bytes_rate_inband
+    - network_incoming_bytes_aggregate_rate
+    - network_outgoing_bytes_aggregate_rate
+    - network_vm_connections
+  SYS.ELB|lbaas_instance_id,lbaas_listener_id:
+    - m1_cps
+    - m2_act_conn
+    - m3_inact_conn
+    - m9_abnormal_servers
+    - ma_normal_servers
+
+## 实例列表，维度名以字母序排列逗号分隔，实例ID以对应顺序配置列表
+dimensions:
+  cn-east-3|SYS.ECS:
+    instance_id:
+      - xxx-000
+      - xxx-001
+  cn-east-3|SYS.ELB:
+    lbaas_instance_id,lbaas_listener_id:
+      - xxxxxxxx-x01,xxxx-xxx00
+      - xxxxxxxx-x01,xxxx-xxx01

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "datasource",
+  "name": "cloudeye-grafana",
+  "id": "huawei-cloudeye-grafana",
+  "metrics": true,
+  "backend": true,
+  "executable": "gpx_cloudeye-grafana",
+  "info": {
+    "description": "huawei cloudeye grafana plugin",
+    "author": {
+      "name": "cloudeye",
+      "url": ""
+    },
+    "keywords": [
+      "cloudeye"
+    ],
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "links": [
+      {
+        "name": "Website",
+        "url": "https://github.com/huaweicloud/cloudeye-grafana"
+      },
+      {
+        "name": "License",
+        "url": "https://github.com/huaweicloud/cloudeye-grafana/blob/master/LICENSE"
+      }
+    ],
+    "screenshots": [],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+  "dependencies": {
+    "grafanaDependency": ">=7.0.0",
+    "plugins": []
+  }
+}
