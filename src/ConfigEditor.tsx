@@ -17,6 +17,7 @@ interface ConfigEditorState {
 export class ConfigEditor extends PureComponent<Props, ConfigEditorState> {
   constructor(props: Props) {
     super(props);
+    this.props.options.jsonData.region = 'cn-east-3';
     this.state = {
       tabs: [
         {label: "Huaweicloud Mode", active: true},
@@ -133,20 +134,12 @@ export class ConfigEditor extends PureComponent<Props, ConfigEditorState> {
         iamEndpoint: '',
         cesEndpoint: '',
         projectId: '',
-        region: ''
+        region: 'cn-east-3'
       }
     });
   }
 
   onTabChange(index: number) {
-    if (index === 0) {
-      const {onOptionsChange, options} = this.props;
-      const jsonData = {
-        ...options.jsonData,
-        region: 'cn-east-3',
-      };
-      onOptionsChange({...options, jsonData});
-    }
     this.resetForm()
     const res: Array<object> = [];
     this.state.tabs.forEach((tab: any, idx: number) => {
