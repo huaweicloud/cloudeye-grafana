@@ -29,7 +29,7 @@ export class DataSource extends DataSourceWithBackend<MyQuery, MyDataSourceOptio
     return promise.then((data: any) => ({data}));
   }
 
-  // 不使用模板，使用自定义dashboard场景查询监控数据
+  // 不使用模板，使用自定义dashboard的场景查询监控数据
   listMetricDataByCustom(options: any) {
     const promises = options.targets.map((target: any) => {
       const metrics: Array<any> = [];
@@ -53,7 +53,7 @@ export class DataSource extends DataSourceWithBackend<MyQuery, MyDataSourceOptio
       return this.listMetricData(reqBody).then(response => {
         if (response && response.data && response.data.results) {
           for (let ref in response.data.results) {
-            if (response.data.results.hasOwnProperty(ref)) {
+            if (Object.prototype.hasOwnProperty.call(response.data.results, ref)) {
               const label: any = {
                 namespace: target.namespace
               }
@@ -118,7 +118,7 @@ export class DataSource extends DataSourceWithBackend<MyQuery, MyDataSourceOptio
       const frames: Array<any> = [];
       if (response && response.data && response.data.results) {
         for (let ref in response.data.results) {
-          if (response.data.results.hasOwnProperty(ref)) {
+          if (Object.prototype.hasOwnProperty.call(response.data.results, ref)) {
             const label: any = {
               namespace: queriesMap[ref].namespace
             }
@@ -166,19 +166,18 @@ export class DataSource extends DataSourceWithBackend<MyQuery, MyDataSourceOptio
       const listDimsParams = this.getTemplateVars(query);
       const regionVar = listDimsParams[0] ? listDimsParams[0] : '';
       const namespace = listDimsParams[1] ? listDimsParams[1] : '';
-      const dimName = listDimsParams[2] ? listDimsParams[2] : '';
-      const relationVar = listDimsParams[3] ? listDimsParams[3] : '';
-      let relation = '';
+      let dimsName = listDimsParams[2] ? listDimsParams[2] : '';
+      const tagDimName = listDimsParams[3] ? listDimsParams[3] : '';
       let region = '';
       templateVariables.forEach((item: any) => {
-        if (regionVar.indexOf(item.name) >= 0) {
+        if (regionVar.indexOf("$" + item.name) >= 0) {
           region = item.current.value;
         }
-        if (relationVar.indexOf(item.name) >= 0) {
-          relation = item.current.value;
+        if (dimsName.indexOf("$" + item.name) >= 0) {
+          dimsName = dimsName.replace("$" + item.name, item.current.value)
         }
       });
-      return await this.listDims(region, namespace, dimName, relation);
+      return await this.listDims(region, namespace, dimsName, tagDimName);
     }
   }
 
@@ -211,42 +210,60 @@ export class DataSource extends DataSourceWithBackend<MyQuery, MyDataSourceOptio
     });
   }
 
-  async listDims(region: string | undefined, namespace: string | undefined, dimName: string | undefined, relation: any): Promise<Array<SelectableValue<string>>> {
+  async listDims(region: string | undefined, namespace: string | undefined, dimsName: string, tagDimName: string): Promise<Array<SelectableValue<string>>> {
     return this.getResource('dimensions', {region: region, namespace: namespace}).then(({dimensions}) => {
       const dims = Object.values(dimensions);
       const result: Array<SelectableValue<string>> = [];
-      if (dimName === '') {
+      if (dimsName === '') {
         dims.forEach((item: any) => {
           result.push({label: item, value: item});
         });
         return result;
       }
-      if (relation !== '') {
-        dims.forEach((item: any) => {
-          if (item.indexOf(dimName) >= 0 && item.indexOf(relation) >= 0) {
-            const dimension = this.parseDims(item)
-            result.push({
-              text: dimension[dimension.length - 1].value,
-              label: dimension[dimension.length - 1].value,
-              value: item
-            });
+      const newDimsName = dimsName.replace(':', ',')
+      const tagDimsName = this.getOrderedDimNames(newDimsName);
+      const preDim = this.parseDims(newDimsName)
+
+      dims.forEach((item: any) => {
+        const itemDimsName = this.getOrderedDimNames(item);
+        let valid = true;
+        preDim.forEach((dim: any) => {
+          if (item.indexOf(dim.name + "," + dim.value) === -1) {
+            valid = false
           }
-        });
-      } else {
-        dims.forEach((item: any) => {
-          if (item.indexOf('.') === -1) {
-            const dimension = this.parseDims(item)
-            result.push({
-              text: dimension[dimension.length - 1].value,
-              label: dimension[dimension.length - 1].value,
-              value: item
-            });
-          }
-        });
-      }
+        })
+        if (tagDimsName === itemDimsName && valid) {
+          const dimension = this.parseDims(item)
+          let value = '';
+          dimension.forEach((dim: any) => {
+            if (dim.name === tagDimName) {
+              value = dim.value;
+              return;
+            }
+          });
+          result.push({text: value, label: item, value: item});
+        }
+      })
       return result;
     });
   }
+
+  getOrderedDimNames(dimsStr: string | null): string {
+    if (dimsStr) {
+      const dimNames: Array<Object> = [];
+      const dims = dimsStr.split('.');
+      dims.forEach((item: any) => {
+        const temp = item.split(',');
+        if (temp.length === 0) {
+          return;
+        }
+        dimNames.push(temp[0])
+      });
+      return dimNames.sort().join('.');
+    }
+    return "";
+  }
+
 
   async listMetrics(region: string | undefined, namespace: string | undefined, dimstr: string | undefined): Promise<Array<SelectableValue<string>>> {
     return this.getResource('metrics', {region: region, namespace: namespace, dimstr: dimstr}).then(({metrics}) => {
@@ -272,10 +289,9 @@ export class DataSource extends DataSourceWithBackend<MyQuery, MyDataSourceOptio
       const dims = dimStr.split('.');
       dims.forEach((item: any) => {
         const temp = item.split(',');
-        if (temp.length != 2) {
-          return;
+        if (temp.length == 2) {
+          dimsions.push({name: temp[0], value: temp[1]})
         }
-        dimsions.push({name: temp[0], value: temp[1]})
       });
       return dimsions;
     }
@@ -286,7 +302,16 @@ export class DataSource extends DataSourceWithBackend<MyQuery, MyDataSourceOptio
     const dimsionsInTarget: any = this.parseDims(target.dimstr);
     if (dimsionsInTarget.length > 0) {
       const queries = getTemplateSrv().getVariables();
-      const targetQuery: any = queries.find(item => item.name === dimsionsInTarget[dimsionsInTarget.length - 1].name);
+      let targetQuery;
+      queries.forEach((item: any) => {
+            const queryDims = this.getOrderedDimNames(item.current.value)
+            const targetDims = this.getOrderedDimNames(target.dimstr)
+            if (queryDims === targetDims) {
+              targetQuery = item;
+            }
+          }
+      );
+      // @ts-ignore
       return targetQuery && targetQuery.current.value ? this.parseDims(targetQuery.current.value) : dimsionsInTarget;
     }
     return dimsionsInTarget || [];

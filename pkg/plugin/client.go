@@ -160,26 +160,13 @@ func getMetaUtil(param *QueryParam) MetaUtil {
 func (c *CESClient) ListMeta(param *QueryParam) []string {
 	metaUtil := getMetaUtil(param)
 	metaCache := metaUtil.getCache()
-	isMetaExist := make(map[string]bool)
-	var metaList []string
-
 	param.Region = c.Region
 	key := metaUtil.buildKey(param)
 	reqParam := metaUtil.buildQuery(param)
-	cachedMeta := metaCache.getCachedMeta(key)
-	if cachedMeta != nil {
-		if !cachedMeta.isExpired() {
-			return cachedMeta.Meta
-		}
 
-		// 大租户可能被流控，接着上次的marker继续请求
-		if !cachedMeta.Finished {
-			reqParam.Start = &cachedMeta.Marker
-			metaList = cachedMeta.Meta
-			for i := range metaList {
-				isMetaExist[metaList[i]] = true
-			}
-		}
+	isMetaExist, metaList, meta := getMeta(metaCache, key, reqParam)
+	if metaList != nil || meta != nil {
+		return meta
 	}
 
 	newCache := metaUtil.newCachedMeta()
@@ -204,18 +191,7 @@ func (c *CESClient) ListMeta(param *QueryParam) []string {
 				return
 			}
 
-			for _, metric := range metrics {
-				if len(metric.Dimensions) > 3 {
-					continue
-				}
-
-				element := metaUtil.getRespElem(metric)
-				if !isMetaExist[element] {
-					isMetaExist[element] = true
-					metaList = append(metaList, element)
-				}
-			}
-
+			procMetaList(metrics, metaUtil, isMetaExist, &metaList)
 			reqParam.Start = &(res.MetaData.Marker)
 			newCache.Marker = res.MetaData.Marker
 			newCache.Meta = metaList
@@ -231,11 +207,42 @@ func (c *CESClient) ListMeta(param *QueryParam) []string {
 			return metaCache.getCachedMeta(key).Meta
 		}
 		return metaList
-
-	case _, ok := <-endFlag:
-		if !ok {
-			log.DefaultLogger.Error("Get end flag error")
-		}
+	case <-endFlag:
 		return metaList
 	}
+}
+
+func procMetaList(metrics []model.MetricInfoList, metaUtil MetaUtil, isMetaExist map[string]bool, metaList *[]string){
+	for _, metric := range metrics {
+		if len(metric.Dimensions) > 3 {
+			continue
+		}
+
+		element := metaUtil.getRespElem(metric)
+		if !isMetaExist[element] {
+			isMetaExist[element] = true
+			*metaList = append(*metaList, element)
+		}
+	}
+}
+
+func getMeta(metaCache *MetaCache, key string, reqParam *model.ListMetricsRequest) (map[string]bool, []string, []string) {
+	isMetaExist := make(map[string]bool)
+	var metaList []string
+	cachedMeta := metaCache.getCachedMeta(key)
+	if cachedMeta != nil {
+		if !cachedMeta.isExpired() {
+			return nil, nil, cachedMeta.Meta
+		}
+
+		// 大租户可能被流控，接着上次的marker继续请求
+		if !cachedMeta.Finished {
+			reqParam.Start = &cachedMeta.Marker
+			metaList = cachedMeta.Meta
+			for i := range metaList {
+				isMetaExist[metaList[i]] = true
+			}
+		}
+	}
+	return isMetaExist, metaList, nil
 }

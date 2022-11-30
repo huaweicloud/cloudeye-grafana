@@ -18,7 +18,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${cloudeye-grafana}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -31,7 +31,7 @@
       "type": "row"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -101,21 +101,21 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "ma_normal_servers",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "ma_normal_servers",
+      "title": "正常主机数",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -185,21 +185,21 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m9_abnormal_servers",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "m9_abnormal_servers",
+      "title": "异常主机数",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -269,21 +269,21 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m7_in_Bps",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "m1_cps",
+      "title": "网络流入速率",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -353,21 +353,21 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m2_act_conn",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "m2_act_conn",
+      "title": "活跃连接数",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -437,21 +437,21 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m3_inact_conn",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "m3_inact_conn",
+      "title": "非活跃连接数",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -521,21 +521,21 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m4_ncps",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "m4_ncps",
+      "title": "新建连接数",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -605,21 +605,21 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m5_in_pps",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "m5_in_pps",
+      "title": "流入数据包数",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -689,21 +689,21 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m6_out_pps",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "m6_out_pps",
+      "title": "流出数据包数",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -773,17 +773,17 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m7_in_Bps",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "m7_in_Bps",
+      "title": "网络流入速率",
       "type": "timeseries"
     },
     {
@@ -801,7 +801,7 @@
       "type": "row"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -871,21 +871,21 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,859564f3-1003-4463-9109-f4914b62569c.lbaas_listener_id,6216858a-7e5f-44ba-8aba-2874b53f3269",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_listener_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m1_cps",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "m1_cps",
+      "title": "并发连接数",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -955,21 +955,21 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1.lbaas_listener_id,28d52bb7-d8f1-46ba-8c88-850e8018c3d4",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_listener_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m2_act_conn",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "m2_act_conn",
+      "title": "活跃连接数",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1039,21 +1039,21 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1.lbaas_listener_id,28d52bb7-d8f1-46ba-8c88-850e8018c3d4",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_listener_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m3_inact_conn",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "m3_inact_conn",
+      "title": "非活跃连接数",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1123,21 +1123,21 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1.lbaas_listener_id,28d52bb7-d8f1-46ba-8c88-850e8018c3d4",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_listener_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m4_ncps",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "m4_ncps",
+      "title": "新建连接数",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1207,21 +1207,21 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1.lbaas_listener_id,28d52bb7-d8f1-46ba-8c88-850e8018c3d4",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_listener_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m5_in_pps",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "m5_in_pps",
+      "title": "流入数据包数",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1291,17 +1291,17 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1.lbaas_listener_id,28d52bb7-d8f1-46ba-8c88-850e8018c3d4",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_listener_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m6_out_pps",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "m6_out_pps",
+      "title": "流出数据包数",
       "type": "timeseries"
     },
     {
@@ -1319,7 +1319,7 @@
       "type": "row"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1389,21 +1389,21 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,9d253128-c1af-486b-b338-d3881ec8d134.lbaas_pool_id,7617a2c8-45e2-46c3-968e-4842c81575d7",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_pool_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "ma_normal_servers",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "ma_normal_servers",
+      "title": "正常主机数",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1473,17 +1473,17 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,9d253128-c1af-486b-b338-d3881ec8d134.lbaas_pool_id,3861d501-e4b1-493d-9d2a-77c0062d7450",
+          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_pool_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m9_abnormal_servers",
           "namespace": "SYS.ELB",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "m9_abnormal_servers",
+      "title": "异常主机数",
       "type": "timeseries"
     }
   ],
@@ -1495,12 +1495,7 @@
     "list": [
       {
         "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "br-iaas-odin1",
-          "value": "br-iaas-odin1"
-        },
-        "datasource": "cloudeye-grafana",
+        "datasource": "${cloudeye-grafana}",
         "definition": "listRegions()",
         "description": null,
         "error": null,
@@ -1519,13 +1514,8 @@
       },
       {
         "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1",
-          "value": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1"
-        },
-        "datasource": "cloudeye-grafana",
-        "definition": "listDims($region,SYS.ELB,lbaas_instance_id,null)",
+        "datasource": "${cloudeye-grafana}",
+        "definition": "listDims($region,SYS.ELB,lbaas_instance_id,lbaas_instance_id)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -1534,7 +1524,7 @@
         "multi": false,
         "name": "lbaas_instance_id",
         "options": [],
-        "query": "listDims($region,SYS.ELB,lbaas_instance_id,null)",
+        "query": "listDims($region,SYS.ELB,lbaas_instance_id,lbaas_instance_id)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1543,13 +1533,8 @@
       },
       {
         "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1.lbaas_listener_id,28d52bb7-d8f1-46ba-8c88-850e8018c3d4",
-          "value": "lbaas_instance_id,45493d4c-226a-4bda-82f4-e9f07924c6d1.lbaas_listener_id,28d52bb7-d8f1-46ba-8c88-850e8018c3d4"
-        },
-        "datasource": "cloudeye-grafana",
-        "definition": "listDims($region,SYS.ELB,lbaas_listener_id,$lbaas_instance_id)",
+        "datasource": "${cloudeye-grafana}",
+        "definition": "listDims($region,SYS.ELB,$lbaas_instance_id.lbaas_listener_id,lbaas_listener_id)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -1558,7 +1543,7 @@
         "multi": false,
         "name": "lbaas_listener_id",
         "options": [],
-        "query": "listDims($region,SYS.ELB,lbaas_listener_id,$lbaas_instance_id)",
+        "query": "listDims($region,SYS.ELB,$lbaas_instance_id.lbaas_listener_id,lbaas_listener_id)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1567,14 +1552,8 @@
       },
       {
         "allValue": null,
-        "current": {
-          "isNone": true,
-          "selected": false,
-          "text": "None",
-          "value": ""
-        },
-        "datasource": "cloudeye-grafana",
-        "definition": "listDims($region,SYS.ELB,lbaas_pool_id,$lbaas_instance_id)",
+        "datasource": "${cloudeye-grafana}",
+        "definition": "listDims($region,SYS.ELB,$lbaas_instance_id.lbaas_pool_id,lbaas_pool_id)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -1583,7 +1562,7 @@
         "multi": false,
         "name": "lbaas_pool_id",
         "options": [],
-        "query": "listDims($region,SYS.ELB,lbaas_pool_id,$lbaas_instance_id)",
+        "query": "listDims($region,SYS.ELB,$lbaas_instance_id.lbaas_pool_id,lbaas_pool_id)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1597,7 +1576,7 @@
           "text": "平均值",
           "value": "average"
         },
-        "datasource": "cloudeye-grafana",
+        "datasource": "${cloudeye-grafana}",
         "definition": "listFilterOptions()",
         "description": null,
         "error": null,
@@ -1621,7 +1600,7 @@
           "text": "原始粒度",
           "value": "1"
         },
-        "datasource": "cloudeye-grafana",
+        "datasource": "${cloudeye-grafana}",
         "definition": "listPeriodOptions()",
         "description": null,
         "error": null,

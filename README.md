@@ -7,7 +7,7 @@ cloudeye-grafana是[华为云监控服务](https://support.huaweicloud.com/ces/)
 
 ## 1. 安装
 > 安装前准备:  
-> a. 已安装Grafana版本 >=7, [grafana官方下载地址](https://grafana.com/grafana/download)  
+> a. 已安装Grafana版本 >=7.4.0, [grafana官方下载地址](https://grafana.com/grafana/download)  
 > b. 从[release页面](https://github.com/huaweicloud/cloudeye-grafana/releases)下载cloudeye-grafana-{version}.tar.gz
 
 ### 1.1 从release安装
@@ -45,3 +45,33 @@ d. 点击Save & test按钮，如果显示Data source is working，说明数据�
     
 ## 4. 导入dashboard模板
 为简便租户配置，本插件提供了ECS、ELB、RDS服务的Dashboard预设模板，见： cloudeye-grafana/src/templates目录
+
+## 5. 创建自定义Dashboard
+a. 鼠标移动至页面左侧菜单"+"图标，选择Dashboard，点击即可创建
+
+b. 创建好之后请点击右上角齿轮图标，选择左侧"Variables"菜单项，点击"Add variable"按钮添加filter和period模板变量。变量配置如下:
+> filter变量：
+```
+{
+    Name: filter,
+    Type: Query,
+    Label: Filter,
+    Data source: cloudeye-grafana,
+    Query: listFilterOptions()
+}
+```
+
+> period变量：
+```
+{
+    Name: period,
+    Type: Query,
+    Label: Period,
+    Data source: cloudeye-grafana,
+    Query: listPeriodOptions()
+}
+```
+
+c. 配置好自定义模板变量后回到Dashboard页面，点击"Add an empty panel"按钮添加指标监控图表
+
+d. 点击右上角保存按钮，完成自定义Dashboard创建
