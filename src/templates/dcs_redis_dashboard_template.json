@@ -10,24 +10,22 @@
     }
   ],
   "editable": true,
-  "gnetId": null,
   "graphTooltip": 0,
-  "id": 31,
-  "iteration": 1635212478789,
+  "id": 37,
+  "iteration": 1665910543972,
   "links": [],
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 4,
+      "id": 7,
       "panels": [],
-      "title": "MySQL实例",
+      "title": "实例",
       "type": "row"
     },
     {
@@ -84,7 +82,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 8,
         "x": 0,
         "y": 1
@@ -103,17 +101,16 @@
       },
       "targets": [
         {
-          "dimstr": "rds_cluster_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
-          "metricName": "rds001_cpu_util",
-          "namespace": "SYS.RDS",
+          "metricName": "memory_usage",
+          "namespace": "SYS.DCS",
           "period": "1",
-          "queryType": "randomWalk",
           "refId": "A",
           "region": "-"
         }
       ],
-      "title": "CPU使用率",
+      "title": "内存使用率",
       "type": "timeseries"
     },
     {
@@ -170,9 +167,94 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 8,
         "x": 8,
+        "y": 1
+      },
+      "id": 22,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "dimstr": "dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "filter": "average",
+          "metricName": "bandwidth_usage",
+          "namespace": "SYS.DCS",
+          "period": "1",
+          "refId": "A",
+          "region": "-"
+        }
+      ],
+      "title": "带宽使用率",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "${cloudeye-grafana}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ops"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
         "y": 1
       },
       "id": 8,
@@ -189,17 +271,16 @@
       },
       "targets": [
         {
-          "dimstr": "rds_cluster_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
-          "metricName": "rds002_mem_util",
-          "namespace": "SYS.RDS",
+          "metricName": "instantaneous_ops",
+          "namespace": "SYS.DCS",
           "period": "1",
-          "queryType": "randomWalk",
           "refId": "A",
           "region": "-"
         }
       ],
-      "title": "内存使用率",
+      "title": "每秒并发操作数",
       "type": "timeseries"
     },
     {
@@ -251,386 +332,15 @@
               }
             ]
           },
-          "unit": "ops"
+          "unit": "short"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 1
-      },
-      "id": 10,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "dimstr": "rds_cluster_id,00000000-0000-0000-0000-000000000000",
-          "filter": "average",
-          "metricName": "rds003_iops",
-          "namespace": "SYS.RDS",
-          "period": "1",
-          "queryType": "randomWalk",
-          "refId": "A",
-          "region": "-"
-        }
-      ],
-      "title": "IOPS",
-      "type": "timeseries"
-    },
-    {
-      "collapsed": true,
-      "datasource": null,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 9
-      },
-      "id": 6,
-      "panels": [],
-      "title": "GaussDB实例",
-      "type": "row"
-    },
-    {
-      "datasource": "${cloudeye-grafana}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 8,
         "x": 0,
-        "y": 10
-      },
-      "id": 12,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "dimstr": "gaussdb_instance_id,00000000-0000-0000-0000-000000000000",
-          "filter": "average",
-          "metricName": "rds001_cpu_util",
-          "namespace": "SYS.RDS",
-          "period": "1",
-          "queryType": "randomWalk",
-          "refId": "A",
-          "region": "-"
-        }
-      ],
-      "title": "CPU使用率",
-      "type": "timeseries"
-    },
-    {
-      "datasource": "${cloudeye-grafana}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 10
-      },
-      "id": 14,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "dimstr": "gaussdb_instance_id,00000000-0000-0000-0000-000000000000",
-          "filter": "average",
-          "metricName": "rds002_mem_util",
-          "namespace": "SYS.RDS",
-          "period": "1",
-          "queryType": "randomWalk",
-          "refId": "A",
-          "region": "-"
-        }
-      ],
-      "title": "内存使用率",
-      "type": "timeseries"
-    },
-    {
-      "datasource": "${cloudeye-grafana}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "ops"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 10
-      },
-      "id": 16,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "dimstr": "gaussdb_instance_id,00000000-0000-0000-0000-000000000000",
-          "filter": "average",
-          "metricName": "rds003_iops",
-          "namespace": "SYS.RDS",
-          "period": "1",
-          "queryType": "randomWalk",
-          "refId": "A",
-          "region": "-"
-        }
-      ],
-      "title": "IOPS",
-      "type": "timeseries"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 18
-      },
-      "id": 18,
-      "panels": [],
-      "title": "SQL Server实例",
-      "type": "row"
-    },
-    {
-      "datasource": "${cloudeye-grafana}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 19
+        "y": 8
       },
       "id": 20,
       "options": {
@@ -646,16 +356,16 @@
       },
       "targets": [
         {
-          "dimstr": "rds_cluster_sqlserver_id,000000000000000000000000000000000000",
+          "dimstr": "dcs_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
-          "metricName": "rds001_cpu_util",
-          "namespace": "SYS.RDS",
+          "metricName": "keys",
+          "namespace": "SYS.DCS",
           "period": "1",
           "refId": "A",
           "region": "-"
         }
       ],
-      "title": "CPU使用率",
+      "title": "缓存键总数",
       "type": "timeseries"
     },
     {
@@ -707,15 +417,15 @@
               }
             ]
           },
-          "unit": "percent"
+          "unit": "short"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 8,
         "x": 8,
-        "y": 19
+        "y": 8
       },
       "id": 21,
       "options": {
@@ -731,16 +441,16 @@
       },
       "targets": [
         {
-          "dimstr": "rds_cluster_sqlserver_id,000000000000000000000000000000000000",
+          "dimstr": "dcs_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
-          "metricName": "rds002_mem_util",
-          "namespace": "SYS.RDS",
+          "metricName": "rx_controlled",
+          "namespace": "SYS.DCS",
           "period": "1",
           "refId": "A",
           "region": "-"
         }
       ],
-      "title": "内存使用率",
+      "title": "流控次数",
       "type": "timeseries"
     },
     {
@@ -792,17 +502,17 @@
               }
             ]
           },
-          "unit": "ops"
+          "unit": "bool"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 8,
         "x": 16,
-        "y": 19
+        "y": 8
       },
-      "id": 22,
+      "id": 9,
       "options": {
         "legend": {
           "calcs": [],
@@ -816,16 +526,16 @@
       },
       "targets": [
         {
-          "dimstr": "rds_cluster_sqlserver_id,000000000000000000000000000000000000",
+          "dimstr": "dcs_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
-          "metricName": "rds003_iops",
-          "namespace": "SYS.RDS",
+          "metricName": "is_slow_log_exist",
+          "namespace": "SYS.DCS",
           "period": "1",
           "refId": "A",
           "region": "-"
         }
       ],
-      "title": "IOPS",
+      "title": "是否存在慢日志",
       "type": "timeseries"
     },
     {
@@ -834,11 +544,11 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 15
       },
-      "id": 24,
+      "id": 11,
       "panels": [],
-      "title": "PostgreSql实例",
+      "title": "数据节点",
       "type": "row"
     },
     {
@@ -895,12 +605,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 8,
         "x": 0,
-        "y": 28
+        "y": 16
       },
-      "id": 26,
+      "id": 12,
       "options": {
         "legend": {
           "calcs": [],
@@ -914,10 +624,95 @@
       },
       "targets": [
         {
-          "dimstr": "postgresql_cluster_id,000000000000000000000000000000000000",
+          "dimstr": "dcs_cluster_redis_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
-          "metricName": "rds001_cpu_util",
-          "namespace": "SYS.RDS",
+          "metricName": "memory_usage",
+          "namespace": "SYS.DCS",
+          "period": "1",
+          "refId": "A",
+          "region": "-"
+        }
+      ],
+      "title": "内存使用率",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "${cloudeye-grafana}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 16
+      },
+      "id": 13,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "dimstr": "dcs_cluster_redis_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "filter": "average",
+          "metricName": "cpu_usage",
+          "namespace": "SYS.DCS",
           "period": "1",
           "refId": "A",
           "region": "-"
@@ -980,12 +775,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 8,
-        "x": 8,
-        "y": 28
+        "x": 16,
+        "y": 16
       },
-      "id": 27,
+      "id": 14,
       "options": {
         "legend": {
           "calcs": [],
@@ -999,16 +794,16 @@
       },
       "targets": [
         {
-          "dimstr": "postgresql_cluster_id,000000000000000000000000000000000000",
+          "dimstr": "dcs_cluster_redis_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
-          "metricName": "rds002_mem_util",
-          "namespace": "SYS.RDS",
+          "metricName": "bandwidth_usage",
+          "namespace": "SYS.DCS",
           "period": "1",
           "refId": "A",
           "region": "-"
         }
       ],
-      "title": "内存使用率",
+      "title": "带宽使用率",
       "type": "timeseries"
     },
     {
@@ -1065,12 +860,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 8,
-        "x": 16,
-        "y": 28
+        "x": 0,
+        "y": 23
       },
-      "id": 28,
+      "id": 23,
       "options": {
         "legend": {
           "calcs": [],
@@ -1084,19 +879,457 @@
       },
       "targets": [
         {
-          "dimstr": "postgresql_cluster_id,000000000000000000000000000000000000",
+          "dimstr": "dcs_cluster_redis_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
-          "metricName": "rds003_iops",
-          "namespace": "SYS.RDS",
+          "metricName": "instantaneous_ops",
+          "namespace": "SYS.DCS",
           "period": "1",
           "refId": "A",
           "region": "-"
         }
       ],
-      "title": "IOPS",
+      "title": "每秒并发操作数",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "${cloudeye-grafana}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 23
+      },
+      "id": 24,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "dimstr": "dcs_cluster_redis_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "filter": "average",
+          "metricName": "keys",
+          "namespace": "SYS.DCS",
+          "period": "1",
+          "refId": "A",
+          "region": "-"
+        }
+      ],
+      "title": "缓存键总数",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "${cloudeye-grafana}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bool"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 23
+      },
+      "id": 25,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "dimstr": "dcs_cluster_redis_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "filter": "average",
+          "metricName": "is_slow_log_exist",
+          "namespace": "SYS.DCS",
+          "period": "1",
+          "refId": "A",
+          "region": "-"
+        }
+      ],
+      "title": "是否存在慢日志",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 16,
+      "panels": [],
+      "title": "Proxy节点",
+      "type": "row"
+    },
+    {
+      "datasource": "${cloudeye-grafana}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 31
+      },
+      "id": 18,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "dimstr": "dcs_cluster_proxy2_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "filter": "average",
+          "metricName": "memory_usage",
+          "namespace": "SYS.DCS",
+          "period": "1",
+          "refId": "A",
+          "region": "-"
+        }
+      ],
+      "title": "内存利用率",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "${cloudeye-grafana}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 31
+      },
+      "id": 17,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "dimstr": "dcs_cluster_proxy2_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "filter": "average",
+          "metricName": "cpu_usage",
+          "namespace": "SYS.DCS",
+          "period": "1",
+          "refId": "A",
+          "region": "-"
+        }
+      ],
+      "title": " CPU利用率",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "${cloudeye-grafana}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 31
+      },
+      "id": 19,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "dimstr": "dcs_cluster_proxy2_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "filter": "average",
+          "metricName": "instantaneous_ops",
+          "namespace": "SYS.DCS",
+          "period": "1",
+          "refId": "A",
+          "region": "-"
+        }
+      ],
+      "title": "每秒并发操作数",
       "type": "timeseries"
     }
   ],
+  "refresh": false,
   "schemaVersion": 36,
   "style": "dark",
   "tags": [],
@@ -1120,14 +1353,14 @@
       },
       {
         "datasource": "${cloudeye-grafana}",
-        "definition": "listDims($region,SYS.RDS,rds_cluster_id,rds_cluster_id)",
+        "definition": "listDims($region,SYS.DCS,dcs_instance_id,dcs_instance_id)",
         "hide": 0,
         "includeAll": false,
-        "label": "MySQL实例",
+        "label": "Redis实例",
         "multi": false,
-        "name": "rds_cluster_id",
+        "name": "dcs_instance_id",
         "options": [],
-        "query": "listDims($region,SYS.RDS,rds_cluster_id,rds_cluster_id)",
+        "query": "listDims($region,SYS.DCS,dcs_instance_id,dcs_instance_id)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1136,14 +1369,14 @@
       },
       {
         "datasource": "${cloudeye-grafana}",
-        "definition": "listDims($region,SYS.RDS,gaussdb_instance_id,gaussdb_instance_id)",
+        "definition": "listDims($region,SYS.DCS,dcs_cluster_redis_node.$dcs_instance_id,dcs_cluster_redis_node)",
         "hide": 0,
         "includeAll": false,
-        "label": "GaussDB实例",
+        "label": "数据节点",
         "multi": false,
-        "name": "gaussdb_instance_id",
+        "name": "dcs_cluster_redis_node",
         "options": [],
-        "query": "listDims($region,SYS.RDS,gaussdb_instance_id,gaussdb_instance_id)",
+        "query": "listDims($region,SYS.DCS,dcs_cluster_redis_node.$dcs_instance_id,dcs_cluster_redis_node)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1151,31 +1384,21 @@
         "type": "query"
       },
       {
+        "current": {
+          "isNone": true,
+          "selected": false,
+          "text": "None",
+          "value": ""
+        },
         "datasource": "${cloudeye-grafana}",
-        "definition": "listDims($region,SYS.RDS,rds_cluster_sqlserver_id,rds_cluster_sqlserver_id)",
+        "definition": "listDims($region,SYS.DCS,dcs_cluster_proxy2_node.$dcs_instance_id,dcs_cluster_proxy2_node)",
         "hide": 0,
         "includeAll": false,
-        "label": "SqlServer实例",
+        "label": "Proxy节点",
         "multi": false,
-        "name": "rds_cluster_sqlserver_id",
+        "name": "dcs_cluster_proxy2_node",
         "options": [],
-        "query": "listDims($region,SYS.RDS,rds_cluster_sqlserver_id,rds_cluster_sqlserver_id)",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
-      },
-      {
-        "datasource": "${cloudeye-grafana}",
-        "definition": "listDims($region,SYS.RDS,postgresql_cluster_id,postgresql_cluster_id)",
-        "hide": 0,
-        "includeAll": false,
-        "label": "PostgreSql实例",
-        "multi": false,
-        "name": "postgresql_cluster_id",
-        "options": [],
-        "query": "listDims($region,SYS.RDS,postgresql_cluster_id,postgresql_cluster_id)",
+        "query": "listDims($region,SYS.DCS,dcs_cluster_proxy2_node.$dcs_instance_id,dcs_cluster_proxy2_node)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1190,11 +1413,9 @@
         },
         "datasource": "${cloudeye-grafana}",
         "definition": "listFilterOptions()",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": "Fiter",
+        "label": "Filter",
         "multi": false,
         "name": "filter",
         "options": [],
@@ -1206,7 +1427,6 @@
         "type": "query"
       },
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "原始粒度",
@@ -1214,8 +1434,6 @@
         },
         "datasource": "${cloudeye-grafana}",
         "definition": "listPeriodOptions()",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Period",
@@ -1237,7 +1455,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "RDS",
-  "uid": "",
-  "version": 7
+  "title": "DCS-Redis",
+  "version": 23,
+  "uid": ""
 }

@@ -17,7 +17,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -87,20 +87,20 @@
       },
       "targets": [
         {
-          "dimstr": "instance_id,e5a27e42-d55f-4943-83e4-002c467f06d8",
+          "dimstr": "instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "cpu_util",
           "namespace": "SYS.ECS",
           "period": "1",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "cpu_util",
+      "title": "CPU使用率",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -170,21 +170,21 @@
       },
       "targets": [
         {
-          "dimstr": "instance_id,e5a27e42-d55f-4943-83e4-002c467f06d8",
+          "dimstr": "instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "disk_read_requests_rate",
           "namespace": "SYS.ECS",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "disk_read_requests_rate",
+      "title": "磁盘读IOPS",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -254,21 +254,21 @@
       },
       "targets": [
         {
-          "dimstr": "instance_id,e5a27e42-d55f-4943-83e4-002c467f06d8",
+          "dimstr": "instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "disk_write_requests_rate",
           "namespace": "SYS.ECS",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "disk_write_requests_rate",
+      "title": "磁盘写IOPS",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -338,21 +338,21 @@
       },
       "targets": [
         {
-          "dimstr": "instance_id,e5a27e42-d55f-4943-83e4-002c467f06d8",
+          "dimstr": "instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "network_vm_pps_in",
           "namespace": "SYS.ECS",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "network_vm_pps_in",
+      "title": "虚拟机入方向PPS",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -422,21 +422,21 @@
       },
       "targets": [
         {
-          "dimstr": "instance_id,e5a27e42-d55f-4943-83e4-002c467f06d8",
+          "dimstr": "instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "network_vm_pps_out",
           "namespace": "SYS.ECS",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "network_vm_pps_out",
+      "title": "虚拟机出方向PPS",
       "type": "timeseries"
     },
     {
-      "datasource": "cloudeye-grafana",
+      "datasource": "${cloudeye-grafana}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -506,17 +506,17 @@
       },
       "targets": [
         {
-          "dimstr": "instance_id,e5a27e42-d55f-4943-83e4-002c467f06d8",
+          "dimstr": "instance_id,00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "network_vm_connections",
           "namespace": "SYS.ECS",
           "period": "1",
           "queryType": "randomWalk",
           "refId": "A",
-          "region": "cn-east-3"
+          "region": "-"
         }
       ],
-      "title": "network_vm_newconnections",
+      "title": "虚拟机整机新建连接数",
       "type": "timeseries"
     }
   ],
@@ -527,12 +527,7 @@
     "list": [
       {
         "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "br-iaas-odin1",
-          "value": "br-iaas-odin1"
-        },
-        "datasource": "cloudeye-grafana",
+        "datasource": "${cloudeye-grafana}",
         "definition": "listRegions()",
         "description": null,
         "error": null,
@@ -551,13 +546,8 @@
       },
       {
         "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "instance_id,082f3fb5-17bb-4d63-b4bc-9ebc87c04d8b",
-          "value": "instance_id,082f3fb5-17bb-4d63-b4bc-9ebc87c04d8b"
-        },
-        "datasource": "cloudeye-grafana",
-        "definition": "listDims($region,SYS.ECS,instance_id,null)",
+        "datasource": "${cloudeye-grafana}",
+        "definition": "listDims($region,SYS.ECS,instance_id,instance_id)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -566,7 +556,7 @@
         "multi": false,
         "name": "instance_id",
         "options": [],
-        "query": "listDims($region,SYS.ECS,instance_id,null)",
+        "query": "listDims($region,SYS.ECS,instance_id,instance_id)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -580,7 +570,7 @@
           "text": "平均值",
           "value": "average"
         },
-        "datasource": "cloudeye-grafana",
+        "datasource": "${cloudeye-grafana}",
         "definition": "listFilterOptions()",
         "description": null,
         "error": null,
@@ -604,7 +594,7 @@
           "text": "原始粒度",
           "value": "1"
         },
-        "datasource": "cloudeye-grafana",
+        "datasource": "${cloudeye-grafana}",
         "definition": "listPeriodOptions()",
         "description": null,
         "error": null,
