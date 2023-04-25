@@ -67,31 +67,31 @@ func LoadDimensions(region, namespace string) []string {
 	for k, v := range dims {
 		dimKeys := strings.Split(k, ",")
 		for i := range v {
-			dimValues := strings.Split(v[i], ",")
+			dimValues := strings.Split(v[i], ":")
 			if len(dimKeys) != len(dimValues) {
 				continue
 			}
 			dimStrs := make([]string, 0, len(dimKeys))
 			for j := range dimKeys {
-				dimStrs = append(dimStrs, fmt.Sprintf("%s,%s", dimKeys[j], dimValues[j]))
+				dimStrs = append(dimStrs, fmt.Sprintf("%s:%s", dimKeys[j], dimValues[j]))
 			}
 
-			res = append(res, strings.Join(dimStrs, "."))
+			res = append(res, strings.Join(dimStrs, ","))
 		}
 	}
 	return res
 }
 
 func LoadMetrics(namespace, dimStr string) []string {
-	dims := strings.Split(dimStr, ".")
+	dims := strings.Split(dimStr, ",")
 	dimKeys := make([]string, 0, len(dims))
 	for _, dim := range dims {
-		eachDim := strings.Split(dim, ",")
+		eachDim := strings.Split(dim, ":")
 		if len(eachDim) != 2 {
 			continue
 		}
 		dimKeys = append(dimKeys, eachDim[0])
 	}
 
-	return GetMeta().Metrics[fmt.Sprintf("%s|%s", namespace, strings.Join(dimKeys, ","))]
+	return GetMeta().Metrics[fmt.Sprintf("%s|%s", namespace, strings.Join(dimKeys, ":"))]
 }

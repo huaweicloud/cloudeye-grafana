@@ -101,7 +101,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "ma_normal_servers",
           "namespace": "SYS.ELB",
@@ -185,7 +185,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m9_abnormal_servers",
           "namespace": "SYS.ELB",
@@ -269,7 +269,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m7_in_Bps",
           "namespace": "SYS.ELB",
@@ -353,7 +353,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m2_act_conn",
           "namespace": "SYS.ELB",
@@ -437,7 +437,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m3_inact_conn",
           "namespace": "SYS.ELB",
@@ -521,7 +521,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m4_ncps",
           "namespace": "SYS.ELB",
@@ -605,7 +605,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m5_in_pps",
           "namespace": "SYS.ELB",
@@ -689,7 +689,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m6_out_pps",
           "namespace": "SYS.ELB",
@@ -773,7 +773,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m7_in_Bps",
           "namespace": "SYS.ELB",
@@ -871,7 +871,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_listener_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000,lbaas_listener_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m1_cps",
           "namespace": "SYS.ELB",
@@ -955,7 +955,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_listener_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000,lbaas_listener_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m2_act_conn",
           "namespace": "SYS.ELB",
@@ -1039,7 +1039,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_listener_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000,lbaas_listener_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m3_inact_conn",
           "namespace": "SYS.ELB",
@@ -1123,7 +1123,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_listener_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000,lbaas_listener_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m4_ncps",
           "namespace": "SYS.ELB",
@@ -1207,7 +1207,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_listener_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000,lbaas_listener_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m5_in_pps",
           "namespace": "SYS.ELB",
@@ -1291,7 +1291,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_listener_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000,lbaas_listener_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m6_out_pps",
           "namespace": "SYS.ELB",
@@ -1389,7 +1389,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_pool_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000,lbaas_pool_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "ma_normal_servers",
           "namespace": "SYS.ELB",
@@ -1473,7 +1473,7 @@
       },
       "targets": [
         {
-          "dimstr": "lbaas_instance_id,00000000-0000-0000-0000-000000000000.lbaas_pool_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "lbaas_instance_id:00000000-0000-0000-0000-000000000000,lbaas_pool_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "m9_abnormal_servers",
           "namespace": "SYS.ELB",
@@ -1534,7 +1534,7 @@
       {
         "allValue": null,
         "datasource": "${cloudeye-grafana}",
-        "definition": "listDims($region,SYS.ELB,$lbaas_instance_id.lbaas_listener_id,lbaas_listener_id)",
+        "definition": "listDims($region,SYS.ELB,$lbaas_instance_id;lbaas_listener_id,lbaas_listener_id)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -1543,7 +1543,7 @@
         "multi": false,
         "name": "lbaas_listener_id",
         "options": [],
-        "query": "listDims($region,SYS.ELB,$lbaas_instance_id.lbaas_listener_id,lbaas_listener_id)",
+        "query": "listDims($region,SYS.ELB,$lbaas_instance_id;lbaas_listener_id,lbaas_listener_id)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1553,7 +1553,7 @@
       {
         "allValue": null,
         "datasource": "${cloudeye-grafana}",
-        "definition": "listDims($region,SYS.ELB,$lbaas_instance_id.lbaas_pool_id,lbaas_pool_id)",
+        "definition": "listDims($region,SYS.ELB,$lbaas_instance_id;lbaas_pool_id,lbaas_pool_id)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -1562,7 +1562,7 @@
         "multi": false,
         "name": "lbaas_pool_id",
         "options": [],
-        "query": "listDims($region,SYS.ELB,$lbaas_instance_id.lbaas_pool_id,lbaas_pool_id)",
+        "query": "listDims($region,SYS.ELB,$lbaas_instance_id;lbaas_pool_id,lbaas_pool_id)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,

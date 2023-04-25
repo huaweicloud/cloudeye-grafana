@@ -87,7 +87,7 @@
       },
       "targets": [
         {
-          "dimstr": "instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "cpu_util",
           "namespace": "SYS.ECS",
@@ -170,7 +170,7 @@
       },
       "targets": [
         {
-          "dimstr": "instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "disk_read_requests_rate",
           "namespace": "SYS.ECS",
@@ -254,7 +254,7 @@
       },
       "targets": [
         {
-          "dimstr": "instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "disk_write_requests_rate",
           "namespace": "SYS.ECS",
@@ -338,7 +338,7 @@
       },
       "targets": [
         {
-          "dimstr": "instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "network_vm_pps_in",
           "namespace": "SYS.ECS",
@@ -422,7 +422,7 @@
       },
       "targets": [
         {
-          "dimstr": "instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "network_vm_pps_out",
           "namespace": "SYS.ECS",
@@ -506,7 +506,7 @@
       },
       "targets": [
         {
-          "dimstr": "instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "network_vm_connections",
           "namespace": "SYS.ECS",
