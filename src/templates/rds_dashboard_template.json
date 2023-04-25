@@ -103,7 +103,7 @@
       },
       "targets": [
         {
-          "dimstr": "rds_cluster_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "rds_cluster_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "rds001_cpu_util",
           "namespace": "SYS.RDS",
@@ -189,7 +189,7 @@
       },
       "targets": [
         {
-          "dimstr": "rds_cluster_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "rds_cluster_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "rds002_mem_util",
           "namespace": "SYS.RDS",
@@ -275,7 +275,7 @@
       },
       "targets": [
         {
-          "dimstr": "rds_cluster_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "rds_cluster_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "rds003_iops",
           "namespace": "SYS.RDS",
@@ -375,7 +375,7 @@
       },
       "targets": [
         {
-          "dimstr": "gaussdb_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "gaussdb_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "rds001_cpu_util",
           "namespace": "SYS.RDS",
@@ -461,7 +461,7 @@
       },
       "targets": [
         {
-          "dimstr": "gaussdb_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "gaussdb_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "rds002_mem_util",
           "namespace": "SYS.RDS",
@@ -547,7 +547,7 @@
       },
       "targets": [
         {
-          "dimstr": "gaussdb_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "gaussdb_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "rds003_iops",
           "namespace": "SYS.RDS",
@@ -646,7 +646,7 @@
       },
       "targets": [
         {
-          "dimstr": "rds_cluster_sqlserver_id,000000000000000000000000000000000000",
+          "dimstr": "rds_cluster_sqlserver_id:000000000000000000000000000000000000",
           "filter": "average",
           "metricName": "rds001_cpu_util",
           "namespace": "SYS.RDS",
@@ -731,7 +731,7 @@
       },
       "targets": [
         {
-          "dimstr": "rds_cluster_sqlserver_id,000000000000000000000000000000000000",
+          "dimstr": "rds_cluster_sqlserver_id:000000000000000000000000000000000000",
           "filter": "average",
           "metricName": "rds002_mem_util",
           "namespace": "SYS.RDS",
@@ -816,7 +816,7 @@
       },
       "targets": [
         {
-          "dimstr": "rds_cluster_sqlserver_id,000000000000000000000000000000000000",
+          "dimstr": "rds_cluster_sqlserver_id:000000000000000000000000000000000000",
           "filter": "average",
           "metricName": "rds003_iops",
           "namespace": "SYS.RDS",
@@ -914,7 +914,7 @@
       },
       "targets": [
         {
-          "dimstr": "postgresql_cluster_id,000000000000000000000000000000000000",
+          "dimstr": "postgresql_cluster_id:000000000000000000000000000000000000",
           "filter": "average",
           "metricName": "rds001_cpu_util",
           "namespace": "SYS.RDS",
@@ -999,7 +999,7 @@
       },
       "targets": [
         {
-          "dimstr": "postgresql_cluster_id,000000000000000000000000000000000000",
+          "dimstr": "postgresql_cluster_id:000000000000000000000000000000000000",
           "filter": "average",
           "metricName": "rds002_mem_util",
           "namespace": "SYS.RDS",
@@ -1084,7 +1084,7 @@
       },
       "targets": [
         {
-          "dimstr": "postgresql_cluster_id,000000000000000000000000000000000000",
+          "dimstr": "postgresql_cluster_id:000000000000000000000000000000000000",
           "filter": "average",
           "metricName": "rds003_iops",
           "namespace": "SYS.RDS",

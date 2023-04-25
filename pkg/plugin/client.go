@@ -134,9 +134,9 @@ func (c *CESClient) Check() error {
 func getDimStr(dims []model.MetricsDimension) string {
 	var dimsList []string
 	for _, dim := range dims {
-		dimsList = append(dimsList, fmt.Sprintf("%s,%s", dim.Name, dim.Value))
+		dimsList = append(dimsList, fmt.Sprintf("%s:%s", dim.Name, dim.Value))
 	}
-	return strings.Join(dimsList, ".")
+	return strings.Join(dimsList, ",")
 }
 
 type QueryParam struct {

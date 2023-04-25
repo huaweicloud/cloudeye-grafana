@@ -176,6 +176,7 @@ export class DataSource extends DataSourceWithBackend<MyQuery, MyDataSourceOptio
         if (dimsName.indexOf("$" + item.name) >= 0) {
           dimsName = dimsName.replace("$" + item.name, item.current.value)
         }
+        dimsName = dimsName.replace(";",",");
       });
       return await this.listDims(region, namespace, dimsName, tagDimName);
     }
@@ -220,15 +221,14 @@ export class DataSource extends DataSourceWithBackend<MyQuery, MyDataSourceOptio
         });
         return result;
       }
-      const newDimsName = dimsName.replace(':', ',')
-      const tagDimsName = this.getOrderedDimNames(newDimsName);
-      const preDim = this.parseDims(newDimsName)
+      const tagDimsName = this.getOrderedDimNames(dimsName);
+      const preDim = this.parseDims(dimsName)
 
       dims.forEach((item: any) => {
         const itemDimsName = this.getOrderedDimNames(item);
         let valid = true;
         preDim.forEach((dim: any) => {
-          if (item.indexOf(dim.name + "," + dim.value) === -1) {
+          if (item.indexOf(dim.name + ":" + dim.value) === -1) {
             valid = false
           }
         })
@@ -251,15 +251,15 @@ export class DataSource extends DataSourceWithBackend<MyQuery, MyDataSourceOptio
   getOrderedDimNames(dimsStr: string | null): string {
     if (dimsStr) {
       const dimNames: Array<Object> = [];
-      const dims = dimsStr.split('.');
+      const dims = dimsStr.split(',');
       dims.forEach((item: any) => {
-        const temp = item.split(',');
+        const temp = item.split(':');
         if (temp.length === 0) {
           return;
         }
         dimNames.push(temp[0])
       });
-      return dimNames.sort().join('.');
+      return dimNames.sort().join(',');
     }
     return "";
   }
@@ -286,9 +286,9 @@ export class DataSource extends DataSourceWithBackend<MyQuery, MyDataSourceOptio
   parseDims(dimStr: string): Array<any> {
     if (dimStr) {
       const dimsions: Array<Object> = [];
-      const dims = dimStr.split('.');
+      const dims = dimStr.split(',');
       dims.forEach((item: any) => {
-        const temp = item.split(',');
+        const temp = item.split(':');
         if (temp.length == 2) {
           dimsions.push({name: temp[0], value: temp[1]})
         }

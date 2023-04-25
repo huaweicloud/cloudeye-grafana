@@ -101,7 +101,7 @@
       },
       "targets": [
         {
-          "dimstr": "dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "memory_usage",
           "namespace": "SYS.DCS",
@@ -186,7 +186,7 @@
       },
       "targets": [
         {
-          "dimstr": "dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "bandwidth_usage",
           "namespace": "SYS.DCS",
@@ -271,7 +271,7 @@
       },
       "targets": [
         {
-          "dimstr": "dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "instantaneous_ops",
           "namespace": "SYS.DCS",
@@ -356,7 +356,7 @@
       },
       "targets": [
         {
-          "dimstr": "dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "keys",
           "namespace": "SYS.DCS",
@@ -441,7 +441,7 @@
       },
       "targets": [
         {
-          "dimstr": "dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "rx_controlled",
           "namespace": "SYS.DCS",
@@ -526,7 +526,7 @@
       },
       "targets": [
         {
-          "dimstr": "dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "is_slow_log_exist",
           "namespace": "SYS.DCS",
@@ -624,7 +624,7 @@
       },
       "targets": [
         {
-          "dimstr": "dcs_cluster_redis_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_cluster_redis_node:00000000000000000000000000000000,dcs_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "memory_usage",
           "namespace": "SYS.DCS",
@@ -709,7 +709,7 @@
       },
       "targets": [
         {
-          "dimstr": "dcs_cluster_redis_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_cluster_redis_node:00000000000000000000000000000000,dcs_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "cpu_usage",
           "namespace": "SYS.DCS",
@@ -794,7 +794,7 @@
       },
       "targets": [
         {
-          "dimstr": "dcs_cluster_redis_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_cluster_redis_node:00000000000000000000000000000000,dcs_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "bandwidth_usage",
           "namespace": "SYS.DCS",
@@ -879,7 +879,7 @@
       },
       "targets": [
         {
-          "dimstr": "dcs_cluster_redis_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_cluster_redis_node:00000000000000000000000000000000,dcs_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "instantaneous_ops",
           "namespace": "SYS.DCS",
@@ -964,7 +964,7 @@
       },
       "targets": [
         {
-          "dimstr": "dcs_cluster_redis_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_cluster_redis_node:00000000000000000000000000000000,dcs_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "keys",
           "namespace": "SYS.DCS",
@@ -1049,7 +1049,7 @@
       },
       "targets": [
         {
-          "dimstr": "dcs_cluster_redis_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_cluster_redis_node:00000000000000000000000000000000,dcs_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "is_slow_log_exist",
           "namespace": "SYS.DCS",
@@ -1147,7 +1147,7 @@
       },
       "targets": [
         {
-          "dimstr": "dcs_cluster_proxy2_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_cluster_proxy2_node:00000000000000000000000000000000,dcs_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "memory_usage",
           "namespace": "SYS.DCS",
@@ -1232,7 +1232,7 @@
       },
       "targets": [
         {
-          "dimstr": "dcs_cluster_proxy2_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_cluster_proxy2_node:00000000000000000000000000000000,dcs_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "cpu_usage",
           "namespace": "SYS.DCS",
@@ -1316,7 +1316,7 @@
       },
       "targets": [
         {
-          "dimstr": "dcs_cluster_proxy2_node,00000000000000000000000000000000.dcs_instance_id,00000000-0000-0000-0000-000000000000",
+          "dimstr": "dcs_cluster_proxy2_node:00000000000000000000000000000000,dcs_instance_id:00000000-0000-0000-0000-000000000000",
           "filter": "average",
           "metricName": "instantaneous_ops",
           "namespace": "SYS.DCS",
@@ -1369,14 +1369,14 @@
       },
       {
         "datasource": "${cloudeye-grafana}",
-        "definition": "listDims($region,SYS.DCS,dcs_cluster_redis_node.$dcs_instance_id,dcs_cluster_redis_node)",
+        "definition": "listDims($region,SYS.DCS,dcs_cluster_redis_node;$dcs_instance_id,dcs_cluster_redis_node)",
         "hide": 0,
         "includeAll": false,
         "label": "数据节点",
         "multi": false,
         "name": "dcs_cluster_redis_node",
         "options": [],
-        "query": "listDims($region,SYS.DCS,dcs_cluster_redis_node.$dcs_instance_id,dcs_cluster_redis_node)",
+        "query": "listDims($region,SYS.DCS,dcs_cluster_redis_node;$dcs_instance_id,dcs_cluster_redis_node)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1391,14 +1391,14 @@
           "value": ""
         },
         "datasource": "${cloudeye-grafana}",
-        "definition": "listDims($region,SYS.DCS,dcs_cluster_proxy2_node.$dcs_instance_id,dcs_cluster_proxy2_node)",
+        "definition": "listDims($region,SYS.DCS,dcs_cluster_proxy2_node;$dcs_instance_id,dcs_cluster_proxy2_node)",
         "hide": 0,
         "includeAll": false,
         "label": "Proxy节点",
         "multi": false,
         "name": "dcs_cluster_proxy2_node",
         "options": [],
-        "query": "listDims($region,SYS.DCS,dcs_cluster_proxy2_node.$dcs_instance_id,dcs_cluster_proxy2_node)",
+        "query": "listDims($region,SYS.DCS,dcs_cluster_proxy2_node;$dcs_instance_id,dcs_cluster_proxy2_node)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,

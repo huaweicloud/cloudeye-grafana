@@ -142,9 +142,12 @@ func (c *MetricCache) getRespElem(metric model.MetricInfoList) string {
 }
 
 func (c *MetricCache) buildQuery(param *QueryParam) *model.ListMetricsRequest {
-	dims := strings.Split(param.DimStr, ".")
+	dims := strings.Split(param.DimStr, ",")
 	reqParam := &model.ListMetricsRequest{
 		Namespace: &param.Namespace,
+	}
+	for i, dim := range dims {
+		dims[i]=strings.ReplaceAll(dim,":",",")
 	}
 	switch len(dims) {
 	case 3:
