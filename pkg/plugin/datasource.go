@@ -57,21 +57,21 @@ func NewCloudEye() datasource.ServeOpts {
 	log.DefaultLogger.Info("Creating cloudEye datasource")
 
 	im := datasource.NewInstanceManager(newCloudEyeInstance)
-	ds := &CloudEyeDatasource{
+	data := &CloudEyeDatasource{
 		im: im,
 	}
 	mux := http.NewServeMux()
-	mux.HandleFunc("/regions", recoverWrapper(ds.listRegions))
-	mux.HandleFunc("/namespaces", recoverWrapper(ds.listNamespaces))
-	mux.HandleFunc("/dimensions", recoverWrapper(ds.listDims))
-	mux.HandleFunc("/metrics", recoverWrapper(ds.listMetrics))
-	mux.HandleFunc("/metric-data", recoverWrapper(ds.listMetricData))
+	mux.HandleFunc("/regions", recoverWrapper(data.listRegions))
+	mux.HandleFunc("/namespaces", recoverWrapper(data.listNamespaces))
+	mux.HandleFunc("/dimensions", recoverWrapper(data.listDims))
+	mux.HandleFunc("/metrics", recoverWrapper(data.listMetrics))
+	mux.HandleFunc("/metric-data", recoverWrapper(data.listMetricData))
 
 	httpResourceHandler := httpadapter.New(mux)
 	return datasource.ServeOpts{
 		CallResourceHandler: httpResourceHandler,
-		QueryDataHandler:    ds,
-		CheckHealthHandler:  ds,
+		QueryDataHandler:    data,
+		CheckHealthHandler:  data,
 	}
 }
 

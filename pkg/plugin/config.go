@@ -9,7 +9,7 @@ import (
 	"sync"
 
 	"github.com/grafana/grafana-plugin-sdk-go/backend/log"
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 )
 
 type MetaConf struct {
