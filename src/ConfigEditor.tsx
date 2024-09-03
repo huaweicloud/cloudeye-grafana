@@ -156,16 +156,19 @@ export class ConfigEditor extends PureComponent<Props, ConfigEditorState> {
     const {options} = this.props;
     const {jsonData, secureJsonFields} = options;
     const secureJsonData = (options.secureJsonData || {}) as MySecureJsonData;
+    const style = {margin: `1px`}
     return (
       <div>
         <TabsBar>
           {this.state.tabs.map((tab: any, index: number) => {
             return (
               <Tab
-                css="margin: 1px"
+                style={style}
                 key={index}
                 label={tab.label}
                 active={tab.active}
+                onPointerEnterCapture={null}
+                onPointerLeaveCapture={null}
                 onChangeTab={() => this.onTabChange(index)}/>
             )
           })}
@@ -258,7 +261,7 @@ export class ConfigEditor extends PureComponent<Props, ConfigEditorState> {
         </TabContent>
         <InlineFieldRow>
           <InlineField label="Get Metric Meta From Conf File" tooltip="打开开关后，通过metric.yaml配置获取区域/服务/资源/指标列表">
-            <InlineSwitch css="" onChange={this.onMetaConfChange} value={jsonData.metaConfEnabled || false}/>
+            <InlineSwitch onChange={this.onMetaConfChange} value={jsonData.metaConfEnabled || false} onPointerEnterCapture={null} onPointerLeaveCapture={null}/>
           </InlineField>
         </InlineFieldRow>
       </div>

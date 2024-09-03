@@ -13,11 +13,18 @@
   "author": "cloudeye",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@grafana/data": "8.1.5",
-    "@grafana/toolkit": "8.1.5",
-    "@grafana/runtime": "8.1.5",
-    "@grafana/ui": "8.1.5",
-    "@types/lodash": "4.14.174"
+    "@grafana/data": "8.2.1",
+    "@grafana/toolkit": "8.2.1",
+    "@grafana/runtime": "8.2.1",
+    "@grafana/ui": "8.2.1",
+    "@types/lodash": "4.14.198",
+    "eslint": "8.56.0",
+    "babel-eslint": "8.2.3",
+    "typescript": "4.9.5-h1.AllScenario.devecostudio.r121",
+    "@typescript-eslint/parser": "6.15.0",
+    "@typescript-eslint/eslint-plugin": "6.15.0",
+    "eslint-plugin-react": "7.33.2",
+    "@cloud/eslint-config-cbc": "1.7.11"
   },
   "resolutions": {
     "rxjs": "7.3.0"

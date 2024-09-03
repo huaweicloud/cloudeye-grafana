@@ -13,6 +13,35 @@ import {MyDataSourceOptions, MyQuery} from './types';
 export class DataSource extends DataSourceWithBackend<MyQuery, MyDataSourceOptions> {
   metaConfEnabled: boolean;
 
+  processResponse(response: any, target: any, metric: any): any {
+    if (response && response.data && response.data.results) {
+      for (let ref in response.data.results) {
+        if (Object.prototype.hasOwnProperty.call(response.data.results, ref)) {
+          const label: any = {
+            namespace: target.namespace
+          }
+          metric.dimensions.forEach((dim: any) => {
+            label[dim.name] = dim.value;
+          });
+          const frame = new MutableDataFrame({
+            refId: ref,
+            fields: [
+              {name: "Time", type: FieldType.time},
+              {name: metric.metric_name, type: FieldType.number, labels: label},
+            ],
+          });
+
+          const times = response.data.results[ref].frames[0].data.values[0];
+          const values = response.data.results[ref].frames[0].data.values[1];
+          times.forEach((time: any, index: any) => {
+            frame.appendRow([time, values[index]]);
+          });
+          return frame;
+        }
+      }
+    }
+  }
+
   constructor(instanceSettings: DataSourceInstanceSettings<MyDataSourceOptions>) {
     super(instanceSettings);
     this.metaConfEnabled = instanceSettings.jsonData.metaConfEnabled || false;
@@ -51,33 +80,8 @@ export class DataSource extends DataSourceWithBackend<MyQuery, MyDataSourceOptio
       }
       // @ts-ignore
       return this.listMetricData(reqBody).then(response => {
-        if (response && response.data && response.data.results) {
-          for (let ref in response.data.results) {
-            if (Object.prototype.hasOwnProperty.call(response.data.results, ref)) {
-              const label: any = {
-                namespace: target.namespace
-              }
-              metric.dimensions.forEach((dim: any) => {
-                label[dim.name] = dim.value;
-              });
-              const frame = new MutableDataFrame({
-                refId: ref,
-                fields: [
-                  {name: "Time", type: FieldType.time},
-                  {name: metric.metric_name, type: FieldType.number, labels: label},
-                ],
-              });
-
-              const times = response.data.results[ref].frames[0].data.values[0];
-              const values = response.data.results[ref].frames[0].data.values[1];
-              times.forEach((time: any, index: any) => {
-                frame.appendRow([time, values[index]]);
-              });
-              return frame;
-            }
-          }
-        }
-      })
+        return this.processResponse(response, target, metric)
+      });
     });
     return promises;
   }

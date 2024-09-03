@@ -212,7 +212,7 @@ func (c *CESClient) ListMeta(param *QueryParam) []string {
 	}
 }
 
-func procMetaList(metrics []model.MetricInfoList, metaUtil MetaUtil, isMetaExist map[string]bool, metaList *[]string){
+func procMetaList(metrics []model.MetricInfoList, metaUtil MetaUtil, isMetaExist map[string]bool, metaList *[]string) {
 	for _, metric := range metrics {
 		if len(metric.Dimensions) > 3 {
 			continue
