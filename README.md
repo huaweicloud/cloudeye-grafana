@@ -9,6 +9,7 @@ cloudeye-grafana是[华为云监控服务](https://support.huaweicloud.com/ces/)
 > 安装前准备:  
 > a. 已安装Grafana版本 >=7.4.0, [grafana官方下载地址](https://grafana.com/grafana/download)  
 > b. 从[release页面](https://github.com/huaweicloud/cloudeye-grafana/releases)下载cloudeye-grafana-{version}.tar.gz
+> - 注意：如果使用release 1.0.3之前的版本，若grafana同时安装多个插件存在兼容问题，建议升级至1.0.3
 
 ### 1.1 从release安装
 a. 将下载的插件包放到grafana的plugin目录(见conf/defaults.ini中的plugins配置路径), 解压缩cloudeye-grafana-{version}.tar.gz, 需要注意目录权限和grafana运行权限保持一致
